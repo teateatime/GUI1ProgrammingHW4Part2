@@ -220,23 +220,23 @@ function check() { // Checks if all of the user's inputs are valid before making
         messages: { // All the custom error messages for each input box
             min_cInput: {
                 number: "Error: Input has to be a valid number.",
-                range: "Error: Number is out of range, please input a number between -300 and 300 inclusively.",
-                required: "Required: Please input a valid number between -300 and 300 inclusively."
+                range: "Error: Number is out of range, please input a number between -100 and 100 inclusively.",
+                required: "Required: Please input a valid number between -100 and 100 inclusively."
             },
             max_cInput: {
                 number: "Error: Input has to be a valid number.",
-                range: "Error: Number is out of range, please input a number between -300 and 300 inclusively.",
-                required: "Required: Please input a valid number between -300 and 300 inclusively."
+                range: "Error: Number is out of range, please input a number between -100 and 100 inclusively.",
+                required: "Required: Please input a valid number between -100 and 100 inclusively."
             },
             min_rInput: {
                 number: "Error: Input has to be a valid number.",
-                range: "Error: Number is out of range, please input a number between -300 and 300 inclusively.",
-                required: "Required: Please input a valid number between -300 and 300 inclusively."
+                range: "Error: Number is out of range, please input a number between -100 and 100 inclusively.",
+                required: "Required: Please input a valid number between -100 and 100 inclusively."
             },
             max_rInput: {
                 number: "Error: Input has to be a valid number.",
-                range: "Error: Number is out of range, please input a number between -300 and 300 inclusively.",
-                required: "Required: Please input a valid number between -300 and 300 inclusively."
+                range: "Error: Number is out of range, please input a number between -100 and 100 inclusively.",
+                required: "Required: Please input a valid number between -100 and 100 inclusively."
             }
         },
         submitHandler: function() { // If submission was valid, we make the table visible and generate it based 
