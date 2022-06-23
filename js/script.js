@@ -84,11 +84,11 @@ function addTabs() {
     so that the values from both of them change when users slides the handle or reinputs a new value.
     -> https://stackoverflow.com/questions/7523864/ui-slider-with-text-box-input
 */
-/*  And for each sliders, set the range to be [-300, 300] */
+/*  And for each sliders, set the range to be [-100, 100] */
 function slider_widget() {
     $("#sliderMinCol").slider({
-        min: -300,
-        max: 300,
+        min: -100,
+        max: 100,
         step: 1,
         slide: function (e, ui) {
             $("#min_cVal").val(ui.value);
@@ -99,8 +99,8 @@ function slider_widget() {
         $("#sliderMinCol").slider("value", parseInt(value));
     });
     $("#sliderMaxCol").slider({
-        min: -300,
-        max: 300,
+        min: -100,
+        max: 100,
         step: 1,
         slide: function (e, ui) {
             $("#max_cVal").val(ui.value);
@@ -111,8 +111,8 @@ function slider_widget() {
         $("#sliderMaxCol").slider("value", parseInt(value));
     });
     $("#sliderMinRow").slider({
-        min: -300,
-        max: 300,
+        min: -100,
+        max: 100,
         step: 1,
         slide: function (e, ui) {
             $("#min_rVal").val(ui.value);
@@ -123,8 +123,8 @@ function slider_widget() {
         $("#sliderMinRow").slider("value", parseInt(value));
     });
     $("#sliderMaxRow").slider({
-        min: -300,
-        max: 300,
+        min: -100,
+        max: 100,
         step: 1,
         slide: function (e, ui) {
             $("#max_rVal").val(ui.value);
@@ -190,28 +190,28 @@ function check() { // Checks if all of the user's inputs are valid before making
     $('#myForm').validate({
         errorClass: "msg-error", // set the error messages to this custom particular class I made.
         rules: { // All the rules for each input box and it pretty much checks if the input is a number,
-            min_cInput: { // checks if its in range between -300 and 300, checks if its a decimal or not, and..
+            min_cInput: { // checks if its in range between -100 and 100, checks if its a decimal or not, and..
                 number: true, // checks if there is input at all.
-                range: [-300, 300],
+                range: [-100, 100],
                 isMinCVal_decimal: true, // if its not a decimal, we are good.
                 required: true
             },
             max_cInput: {
                 number: true,
-                range: [-300, 300],
+                range: [-100, 100],
                 greaterThan_Col: '#min_cInput',
                 isMaxCVal_decimal: true,
                 required: true
             }, 
             min_rInput: {
                 number: true,
-                range: [-300, 300],
+                range: [-100, 100],
                 isMinRVal_decimal: true,
                 required: true
             },
             max_rInput: {
                 number: true,
-                range: [-300, 300],
+                range: [-100, 100],
                 greaterThan_Row: '#min_rInput',
                 isMaxRVal_decimal: true,
                 required: true
