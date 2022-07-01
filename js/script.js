@@ -28,6 +28,15 @@ $(document).ready(function() {
     });
 });
 
+function auto_submit() {
+    if ($("#myForm").valid() == true) {
+        check();
+        let output = document.getElementById('tab');
+        output.style.display = "block";
+        display_table();
+    }
+}
+
 /*  Very helpful stackoverflow link to delete all the tabs.
     Credit -> https://stackoverflow.com/questions/721927/empty-jquery-ui-tabs
     I based this function on one of the possible solutions */
@@ -92,6 +101,7 @@ function slider_widget() {
         step: 1,
         slide: function (e, ui) {
             $("#min_cVal").val(ui.value);
+            auto_submit();
         }
     });
     $("#min_cVal").change(function() {
@@ -104,6 +114,7 @@ function slider_widget() {
         step: 1,
         slide: function (e, ui) {
             $("#max_cVal").val(ui.value);
+            auto_submit();
         }
     });
     $("#max_cVal").change(function() {
@@ -116,6 +127,7 @@ function slider_widget() {
         step: 1,
         slide: function (e, ui) {
             $("#min_rVal").val(ui.value);
+            auto_submit();
         }
     });
     $("#min_rVal").change(function() {
@@ -128,6 +140,7 @@ function slider_widget() {
         step: 1,
         slide: function (e, ui) {
             $("#max_rVal").val(ui.value);
+            auto_submit();
         }
     });
     $("#max_rVal").change(function() {
@@ -296,6 +309,49 @@ function mult_table() {
         // table.innerHTML = table_stuff; // Tried table.innerHTML, made very wacky changes to my css so
         // I used a jQuery version of innerHTML that I messed around with as shown above.
         addTabs();
+        return false;
+    } else {
+        console.log("Something went wrong");
+        return false;
+    }
+}
+
+function display_table() {
+    let min_c_val = Number(document.getElementById("min_cVal").value);
+    let max_c_val = Number(document.getElementById("max_cVal").value);
+    let min_r_val = Number(document.getElementById("min_rVal").value);
+    let max_r_val = Number(document.getElementById("max_rVal").value);
+
+    console.log("min_c_val = ", min_c_val,
+    " max_c_val = ", max_c_val, " min_r_val = ", min_r_val, " max_r_val = ", max_r_val);
+
+    // Should always enter this condition, if it does not we console.log("Smth").
+    if ((max_r_val >= min_r_val) && (max_c_val >= min_c_val)) {
+        const tr = '<tr>';
+        const tr_end = '</tr>';
+        const td = '<td>';
+        const td_end = '</td>';
+        const th = '<th>';
+        const th_end = '</th>';
+        let table_stuff = tr + th + th_end;
+
+        // Builds the top header or row
+        for (let i = min_r_val; i <= max_r_val; i++) {
+            table_stuff += th + i + th_end;
+        }
+
+        // Builds the rest of rows and data
+        for (let i = min_c_val; i <= max_c_val; i++) {
+            // Outer loop builds the side header or first column header
+            table_stuff += tr + th + i + th_end;
+            // Inner loop builds the rest of the table cells
+            for (let j = min_r_val; j <= max_r_val; j++) {
+                let result = i * j;
+                table_stuff += td + result + td_end;
+            }
+            table_stuff += tr_end;
+        }
+        $('#Multiplication-Table').html(table_stuff);
         return false;
     } else {
         console.log("Something went wrong");
